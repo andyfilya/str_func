@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 
 void func_puts(const char *new_str)
 {
@@ -70,7 +70,52 @@ char *new_strcpy(const char *str_1, char *str_2)
     char *first = str_2;
     return first;
 }
-
+char *new_strncpy(const char *str_1, const shar *str_2, unsigned int counter)
+{
+    while(counter--)
+    {
+        if (*str_1 != '\0')
+        {
+            *str_2++ = *str_1++;
+        }
+        else
+        {
+            *str_2 += '\0';
+        }
+    }
+    char *first = str_2;
+    return first;
+}
+char *new_strdup(const char *str)
+{
+    char *new_str = "";
+    if (!(new_str = (char *)malloc(sizeof(char) * new_strlen(str) + 1)))
+    {
+        return NULL;
+    }
+    while (*new_str)
+    {
+        new_str[i++] = *str++;
+    }
+    new_str[i] = '\0'
+    return new_str;
+}
+void new_strcat(char *str_1, const char *str_2)
+{
+    int len_str_1 = new_strlen(str_1);
+    for(int i = 0; *(str_2 + i) != '\0'; i++)
+    {
+        *(str_1 + len_str_1 + i) = *(str_2 + i);
+    }
+}
+void new_strncar(char *str_1, char *str_2, int counter_of_chars)
+{
+    int len_str_1 = new_strlen(str_1);
+    for(int i = 0; i < counter_of_chars; i++)
+    {
+        *(str_1 + len_str_1 + i) = *(str_2 + i);
+    }
+}
 int main()
 {
     char str_1[256] = "my_name";
