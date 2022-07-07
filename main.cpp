@@ -76,5 +76,5 @@ int main()
     char str_1[256] = "my_name";
     char str_2[256] = "";
     char *new_adress = new_strcpy(str_1, str_2);
-    printf("%c", *new_adress);
+    printf("%d", new_adress);
 }
