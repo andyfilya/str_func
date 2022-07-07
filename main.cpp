@@ -39,7 +39,7 @@ int func_strcmp(const char *new_str_1, const char *new_str_2)
     return 0;
 }
 
-int strlen(const char *new_str)
+int new_strlen(const char *new_str)
 {
     int strlen = 0;
     for(int j = 0; *(new_str + j) != '\0'; j++)
@@ -49,12 +49,24 @@ int strlen(const char *new_str)
     return strlen;
 }
 
+char *new_strchr(char *new_str, const char symbol)
+{
+    for (int j = 0; new_str[j] != '\0'; j++)
+    {
+        if (new_str[j] == symbol)
+        {
+            return &new_str[j];
+        }
+    } 
+    return NULL;
+}
+
+
 
 int main()
 {
     char str_1[256] = "andy";
-    char str_2[256] = "andreytttt";
-    int a = func_strcmp(str_1, str_2);
-    int strlen1 = strlen(str_1);
-    printf("%d\n", strlen1);
+    char symbol = 'e';
+    char *m = new_strchr(str_1, symbol);
+    printf("%c\n", *m);
 }
