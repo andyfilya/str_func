@@ -14,7 +14,7 @@ void test_func_strcat();
 void test_func_strncat();
 void test_func_getline();
 void test_func_fgets();
-#define DEBUG
+
 void func_puts(const char *new_str)
 {
     assert(new_str);
@@ -91,7 +91,7 @@ char *new_strcpy(const char *str_1, char *str_2)
     char *first = str_2;
     return first;
 }
-char *new_strncpy(char *str_1, char *str_2, unsigned int counter)
+char *new_strncpy(char *str_1, const char *str_2, unsigned int counter)
 {
     assert(str_1);
     assert(str_2);
@@ -125,7 +125,7 @@ char *new_strdup(const char *str)
     new_str[i] = '\0';
     return new_str;
 }
-void new_strcat(char *str_1, const char *str_2)
+void *new_strcat(char *str_1, const char *str_2)
 {
     assert(str_1);
     assert(str_2);
@@ -134,8 +134,9 @@ void new_strcat(char *str_1, const char *str_2)
     {
         *(str_1 + len_str_1 + i) = *(str_2 + i);
     }
+    return str_1;
 }
-void new_strncat(char *str_1, char *str_2, int counter_of_chars)
+void *new_strncat(char *str_1, char *str_2, int counter_of_chars)
 {
     assert(str_1);
     assert(str_2);
@@ -144,6 +145,7 @@ void new_strncat(char *str_1, char *str_2, int counter_of_chars)
     {
         *(str_1 + len_str_1 + i) = *(str_2 + i);
     }
+    return str_1;
 }
 int new_getline(char str[], int counter_of_chars)
 {
@@ -179,7 +181,6 @@ char *new_fgets(char *str, int lim, FILE *iop)
 }
 int main()
 {
-    #ifdef DEBUG
     test_func_puts();
     test_func_strcmp();
     test_func_strlen();
@@ -191,7 +192,6 @@ int main()
     test_func_strncat();
     test_func_getline();
     test_func_fgets();
-    #endif
 }
 void test_func_puts()
 {
