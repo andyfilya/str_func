@@ -116,6 +116,36 @@ void new_strncar(char *str_1, char *str_2, int counter_of_chars)
         *(str_1 + len_str_1 + i) = *(str_2 + i);
     }
 }
+int new_getline(char str[], int counter_of_chars)
+{
+    int my_char;
+    for(int i = 0; i < counter_of_chars && (my_char = getchar()) != EOF && my_char != '\n')
+    {
+        str[i] = my_char;
+        if (my_char == '\n')
+        {
+            str[i] = my_char;
+            i++;
+        }
+        str[i] = '\0';
+    }
+    return i;
+}
+char *new_fgets(char *str, int lim, FILE *iop)
+{
+    int c;
+    char *cs;
+    cs = str;
+    while(--lim > 0 && (c = getc(iop)) != EOF)
+    {
+        if ((*cs++ = c) == '\n')
+        {
+            break;
+        }
+    }
+    *cs = '\0';
+    return (c == EOF && cs == s) ? NULL : s;
+}
 int main()
 {
     char str_1[256] = "my_name";
